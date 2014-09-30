@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Testing of solver</title>
+    <link rel="stylesheet" href="qunit-1.15.0.css">
+</head>
+<body>
+<a href="index.html">Proceed to solver</a>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="qunit-1.15.0.js"></script>
+<script src="script.js"></script>
+<script>
+    QUnit.test("Testing for correct input", function() {
+        equal(checkValue(''), 1, "We pass the value ''. We expect the response is '1' (empty input)");
+        equal(checkValue('1p'), 2, "We pass the value '1p'. We expect the response is '2' (not a number)");
+        equal(checkValue('eee,10'), 2, "We pass the value 'eee,10'. We expect the response is '2' (not a number)");
+        equal(checkValue('1000000'), 3, "We pass the value '1000000'. We expect the response is '3' (out of range)");
+        equal(checkValue('-5001'), 3, "We pass the value '-5001'. We expect the response is '3' (out of range)");
+        equal(checkValue('0'), 0, "We pass the value '0'. We expect the response is '0' (satisfactory value)");
+        equal(checkValue('-4999'), 0, "We pass the value '-4999'. We expect the response is '0' (satisfactory value)");
+    });
+</script>
+</body>
+</html>
