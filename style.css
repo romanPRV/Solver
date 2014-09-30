@@ -25,3 +25,8 @@ input {
 #error {
     color: red;
 }
+
+#submit {
+    color: greenyellow;
+    background-color: blue;
+}

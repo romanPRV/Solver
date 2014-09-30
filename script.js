@@ -40,6 +40,7 @@ function createInitialMatrix() {
         initMatrix.appendChild(document.createElement('br'));
     }
     var submitButton = document.createElement('input');
+    submitButton.id = "submit";
     submitButton.type = "submit";
     submitButton.value = "Submit";
     submitButton.setAttribute('onclick','solve();');
