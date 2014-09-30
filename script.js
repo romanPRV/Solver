@@ -179,7 +179,7 @@ function solve() {
         solveBlock = document.createElement('div');
         solveBlock.id = "solve_block";
         solveBlock.appendChild(document.createElement('br'));
-        solveBlock.innerHTML = err.message;
+        solveBlock.innerHTML = '<p id="error">' + err.message + '</p>';
         document.body.appendChild(solveBlock);
     }
 
@@ -243,11 +243,13 @@ function solve() {
 
     function showResults() {
         var results = document.createElement('div');
-        results.innerHTML = "<br>Vector X:<br>";
+        results.id = "results";
+        results.innerHTML = "<h3>Results</h3>";
+        results.innerHTML += "<b>Vector X:</b><br>";
         for (var i = 0; i < vectorX.length; i++) {
             results.innerHTML += 'X' + subs[i] + ' = ' + vectorX[i].toFixed(3) + '<br>';
         }
-        results.innerHTML += "<br>Vector E:<br>";
+        results.innerHTML += "<br><b>Vector E:</b><br>";
         for (i = 0; i < vectorE.length; i++) {
             results.innerHTML += 'E' + subs[i] + ' = ' + vectorE[i].toFixed(20) + '<br>';
         }
