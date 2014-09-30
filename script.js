@@ -135,6 +135,9 @@ function solve() {
                 var flag = 1;
                 for (var k = 0; k < matrix[0].length; k++) {
                     matrix[j][k] -= multiplier * matrix[i - 1][k];
+                    if (Math.abs(matrix[j][k]) < 0.000001) {
+                        matrix[j][k] = 0;
+                    }
                     if (k < matrix[0].length - 1 && matrix[j][k] != 0) {
                         flag = 0;
                     }
