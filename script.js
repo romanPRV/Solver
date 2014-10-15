@@ -1,14 +1,34 @@
-var subs = ['₁', '₂', '₃', '₄'];
-var rows = 4;
-var columns = 5;
+function MainParams() {
+    this.subs = ['₁', '₂', '₃', '₄'];
+    this.rows = 4;
+    this.columns = 5;
+    this.defaultData = [
+        [0, 1, 3, 2, -1],
+        [1000, 3, 1, -5, -2],
+        [-3, 4, 1, 4, -1],
+        [4, 0, -2, -3, 4]
+    ];
+    this.matrix = [
+        [0],
+        [0],
+        [0],
+        [0],
+        [0]
+    ];
+    this.origin = [
+        [0],
+        [0],
+        [0],
+        [0]
+    ];
+}
 
 function createInitialMatrix() {
-    var defaultData = [
-     [0, 1, 3, 2, -1],
-     [1000, 3, 1, -5, -2],
-     [-3, 4, 1, 4, -1],
-     [4, 0, -2, -3, 4]
-     ];
+    var params = new MainParams();
+    var subs = params.subs;
+    var rows = params.rows;
+    var columns = params.columns;
+    var defaultData = params.defaultData;
     var title = document.createElement('h2');
     title.innerHTML = "Solver the system of linear equations";
     document.body.appendChild(title);
@@ -89,19 +109,12 @@ function checkValue(value) {
 }
 
 function solve() {
-    var matrix = [
-        [0],
-        [0],
-        [0],
-        [0],
-        [0]
-    ];
-    var origin = [
-        [0],
-        [0],
-        [0],
-        [0]
-    ];
+    var params = new MainParams();
+    var subs = params.subs;
+    var rows = params.rows;
+    var columns = params.columns;
+    var matrix = params.matrix;
+    var origin = params.origin;
     var vectorX = [];
     var vectorE = [];
     var vectorAX = [];
