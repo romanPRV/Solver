@@ -21,6 +21,58 @@
         equal(checkValue('0'), 0, "We pass the value '0'. We expect the response is '0' (satisfactory value)");
         equal(checkValue('-4999'), 0, "We pass the value '-4999'. We expect the response is '0' (satisfactory value)");
     });
+
+    QUnit.test("Testing for maximal element (in absolute value)", function() {
+        var matrix = [
+            [10, 1, 3, 0],
+            [-100, 4, 4, 0],
+            [-3, 7, 1, 0],
+            [0, 0, 0, 0]
+        ];
+        equal(searchMax(matrix, 0).value, -100, "We pass the matrix [[10, 1, 3][-100, 4, 4][-3, 7, 1]]. We expect the response is '-100'");
+        equal(searchMax(matrix, 1).value, 7, "We pass the matrix [[4, 4][7, 1]]. We expect the response is '7'");
+        equal(searchMax(matrix, 2).value, 1, "We pass the matrix [[1]]. We expect the response is '1'");
+    });
+
+    QUnit.test("Testing for swapping rows", function() {
+        var matrix = [
+            [10, 1, 3],
+            [-100, 4, 4],
+            [-3, 7, 1]
+        ];
+        var matrixSwapOne = [
+            [-3, 7, 1],
+            [-100, 4, 4],
+            [10, 1, 3]
+        ];
+        var matrixSwapTwo = [
+            [-3, 7, 1],
+            [10, 1, 3],
+            [-100, 4, 4]
+        ];
+        deepEqual(swapRows(matrix, 0, 2), matrixSwapOne, "We pass the matrix [[10, 1, 3][-100, 4, 4][-3, 7, 1]]. Swapping the first and third rows. We expect the result is [[-3, 7, 1][-100, 4, 4][10, 1, 3]]");
+        deepEqual(swapRows(matrixSwapOne, 1, 2), matrixSwapTwo, "We pass the matrix [[-3, 7, 1][-100, 4, 4][10, 1, 3]]. Swapping the second and third rows. We expect the result is [[-3, 7, 1][10, 1, 3][-100, 4, 4]]");
+    });
+
+    QUnit.test("Testing for swapping columns", function() {
+        var matrix = [
+            [12, 5, 3],
+            [-10, 41, 4],
+            [93, 0, 1]
+        ];
+        var matrixSwapOne = [
+            [3, 5, 12],
+            [4, 41, -10],
+            [1, 0, 93]
+        ];
+        var matrixSwapTwo = [
+            [5, 3, 12],
+            [41, 4, -10],
+            [0, 1, 93]
+        ];
+        deepEqual(swapColumns(matrix, 0, 2), matrixSwapOne, "We pass the matrix [[12, 5, 3][-10, 41, 4][93, 0, 1]]. Swapping the first and third columns. We expect the result is [[3, 5, 12][4, 41, -10][1, 0, 93]]");
+        deepEqual(swapColumns(matrixSwapOne, 0, 1), matrixSwapTwo, "We pass the matrix [[3, 5, 12][4, 41, -10][1, 0, 93]]. Swapping the first and second columns. We expect the result is [[5, 3, 12][41, 4, -10][0, 1, 93]]");
+    });
 </script>
 </body>
 </html>

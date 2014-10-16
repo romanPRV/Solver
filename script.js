@@ -140,9 +140,9 @@ function solve() {
     solveBlock.appendChild(document.createElement('br'));
     try {
         for (i = 1; i < matrix.length - 1; i++) {           //transformation to row echelon form
-            var maxItem = searchMax(i - 1);
-            swapRows(maxItem.indexX, i - 1);
-            swapColumns(maxItem.indexY, i - 1);
+            var maxItem = searchMax(matrix, i - 1);
+            swapRows(matrix, maxItem.indexX, i - 1);
+            swapColumns(matrix, maxItem.indexY, i - 1);
             for (j = i; j < matrix.length - 1; j++) {
                 var multiplier = matrix[j][i - 1] / matrix[i - 1][i - 1];
                 var flag = 1;
@@ -200,38 +200,6 @@ function solve() {
         document.body.appendChild(solveBlock);
     }
 
-    function searchMax(searchIndex) {
-        var maxItem = {value: matrix[searchIndex][searchIndex], indexX: searchIndex, indexY: searchIndex};
-        for (var i = searchIndex; i < matrix.length - 1; i++) {
-            for (var j = searchIndex; j < matrix[0].length - 1; j++) {
-                if (Math.abs(maxItem.value) < Math.abs(matrix[i][j])) {
-                    maxItem.value = matrix[i][j];
-                    maxItem.indexX = i;
-                    maxItem.indexY = j;
-                }
-            }
-        }
-        return maxItem;
-    }
-
-    function swapRows(rowA, rowB) {
-        var tempItem;
-        for (var i = 0; i < matrix[0].length; i++) {
-            tempItem = matrix[rowA][i];
-            matrix[rowA][i] = matrix[rowB][i];
-            matrix[rowB][i] = tempItem;
-        }
-    }
-
-    function swapColumns(colA, colB) {
-        var tempItem;
-        for (var i = 0; i < matrix.length; i++) {
-            tempItem = matrix[i][colA];
-            matrix[i][colA] = matrix[i][colB];
-            matrix[i][colB] = tempItem;
-        }
-    }
-
     function showInterMatrix() {
         var div = document.createElement('div');
         for (var i = 0; i < rows; i++) {
@@ -272,5 +240,39 @@ function solve() {
         }
         solveBlock.appendChild(results);
     }
+}
+
+function searchMax(matrix, searchIndex) {
+    var maxItem = {value: matrix[searchIndex][searchIndex], indexX: searchIndex, indexY: searchIndex};
+    for (var i = searchIndex; i < matrix.length - 1; i++) {
+        for (var j = searchIndex; j < matrix[0].length - 1; j++) {
+            if (Math.abs(maxItem.value) < Math.abs(matrix[i][j])) {
+                maxItem.value = matrix[i][j];
+                maxItem.indexX = i;
+                maxItem.indexY = j;
+            }
+        }
+    }
+    return maxItem;
+}
+
+function swapRows(matrix, rowA, rowB) {
+    var tempItem;
+    for (var i = 0; i < matrix[0].length; i++) {
+        tempItem = matrix[rowA][i];
+        matrix[rowA][i] = matrix[rowB][i];
+        matrix[rowB][i] = tempItem;
+    }
+    return matrix;
+}
+
+function swapColumns(matrix, colA, colB) {
+    var tempItem;
+    for (var i = 0; i < matrix.length; i++) {
+        tempItem = matrix[i][colA];
+        matrix[i][colA] = matrix[i][colB];
+        matrix[i][colB] = tempItem;
+    }
+    return matrix;
 }
 
