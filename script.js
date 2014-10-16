@@ -24,12 +24,12 @@ function MainParams() {
 }
 
 function createInitialMatrix() {
-    var params = new MainParams();
-    var subs = params.subs;
-    var rows = params.rows;
-    var columns = params.columns;
-    var defaultData = params.defaultData;
-    var title = document.createElement('h2');
+    var params = new MainParams(),                                 
+        subs = params.subs,
+        rows = params.rows,
+        columns = params.columns,
+        defaultData = params.defaultData,
+        title = document.createElement('h2');
     title.innerHTML = "Solver the system of linear equations";
     document.body.appendChild(title);
     var initialText = document.createElement('p');
@@ -109,16 +109,16 @@ function checkValue(value) {
 }
 
 function solve() {
-    var params = new MainParams();
-    var subs = params.subs;
-    var rows = params.rows;
-    var columns = params.columns;
-    var matrix = params.matrix;
-    var origin = params.origin;
-    var vectorX = [];
-    var vectorE = [];
-    var vectorAX = [];
-    var vectorB = [];
+    var params = new MainParams(),               
+        subs = params.subs,
+        rows = params.rows,
+        columns = params.columns,
+        matrix = params.matrix,
+        origin = params.origin,
+        vectorX = [],
+        vectorE = [],
+        vectorAX = [],
+        vectorB = [];
     for (var i = 0; i < rows + 1; i++) {                    //creation of working matrices
         for (var j = 0; j < columns; j++) {
             if (i < rows && j < columns - 1) {
